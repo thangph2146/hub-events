@@ -1,0 +1,111 @@
+@page "/login"
+@using hub_events.Services
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Đăng nhập</PageTitle>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Đăng nhập</h3>
+            </div>
+            <div class="card-body">
+                <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+                    <DataAnnotationsValidator />
+                    
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger">
+                            @errorMessage
+                        </div>
+                    }
+                    
+                    <div class="form-group mb-3">
+                        <label for="email">Email</label>
+                        <InputText id="email" @bind-Value="loginModel.Email" class="form-control" />
+                        <ValidationMessage For="@(() => loginModel.Email)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="password">Mật khẩu</label>
+                        <InputText id="password" @bind-Value="loginModel.Password" type="password" class="form-control" />
+                        <ValidationMessage For="@(() => loginModel.Password)" />
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <InputCheckbox id="rememberMe" @bind-Value="loginModel.RememberMe" class="form-check-input" />
+                        <label class="form-check-label" for="rememberMe">Ghi nhớ đăng nhập</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" disabled="@isLoading">
+                            @if (isLoading)
+                            {
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span>Đang xử lý...</span>
+                            }
+                            else
+                            {
+                                <span>Đăng nhập</span>
+                            }
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+            <div class="card-footer text-center">
+                <p>Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+    private bool isLoading = false;
+    private string? errorMessage;
+
+    private async Task HandleLogin()
+    {
+        isLoading = true;
+        errorMessage = null;
+        
+        try
+        {
+            var user = await UserService.AuthenticateAsync(loginModel.Email, loginModel.Password);
+            
+            if (user != null)
+            {
+                // Đăng nhập thành công - chuyển hướng đến trang chủ
+                NavigationManager.NavigateTo("/");
+            }
+            else
+            {
+                // Đăng nhập thất bại
+                errorMessage = "Email hoặc mật khẩu không đúng";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Lỗi đăng nhập: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "Email là bắt buộc")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Mật khẩu là bắt buộc")]
+        [MinLength(6, ErrorMessage = "Mật khẩu phải có ít nhất 6 ký tự")]
+        public string Password { get; set; } = string.Empty;
+
+        public bool RememberMe { get; set; }
+    }
+} 
