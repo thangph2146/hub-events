@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/ThangPham/HUB/hub-events/obj/Debug/net8.0/scopedcss/projectbundle/hub-events.bundle.scp.css",
+      "PackagePath": "staticwebassets/hub-events.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/ThangPham/HUB/hub-events/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
+    },
+    {
+      "Id": "/Users/ThangPham/HUB/hub-events/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/ThangPham/HUB/hub-events/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/ThangPham/HUB/hub-events/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.hub-events.props",
+      "PackagePath": "build\\hub-events.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.hub-events.props",
+      "PackagePath": "buildMultiTargeting\\hub-events.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.hub-events.props",
+      "PackagePath": "buildTransitive\\hub-events.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.hub-events.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
