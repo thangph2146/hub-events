@@ -2,23 +2,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace hub_events.Models;
 
-public class User
+public class LoginModel
 {
-    [Key]
-    public int Id { get; set; }
-    
     [Required(ErrorMessage = "Email là bắt buộc")]
     [EmailAddress(ErrorMessage = "Email không hợp lệ")]
-    [StringLength(100)]
     public string Email { get; set; } = string.Empty;
-    
+
     [Required(ErrorMessage = "Mật khẩu là bắt buộc")]
+    [MinLength(6, ErrorMessage = "Mật khẩu phải có ít nhất 6 ký tự")]
     public string Password { get; set; } = string.Empty;
-    
-    [StringLength(50)]
-    public string FullName { get; set; } = string.Empty;
-    
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
-    
-    public bool IsActive { get; set; } = true;
+
+    public bool RememberMe { get; set; }
 } 

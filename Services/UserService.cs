@@ -26,7 +26,7 @@ public class UserService : IUserService
             return null;
             
         // Kiểm tra mật khẩu
-        if (!BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+        if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
             return null;
             
         return user;
@@ -50,7 +50,7 @@ public class UserService : IUserService
             return false;
             
         // Mã hóa mật khẩu
-        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
+        user.Password = BCrypt.Net.BCrypt.HashPassword(password);
         
         // Thêm người dùng mới
         _context.Users.Add(user);

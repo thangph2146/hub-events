@@ -12,7 +12,7 @@ using hub_events.Data;
 namespace hubevents.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250405162728_InitialCreate")]
+    [Migration("20250405172135_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -49,7 +49,7 @@ namespace hubevents.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -68,7 +68,16 @@ namespace hubevents.Migrations
                             Email = "admin@example.com",
                             FullName = "Quản trị viên",
                             IsActive = true,
-                            PasswordHash = "$2a$11$I2lTejQr/ieggT/y7NRfluc1oz4hBfN9JZ3HK9lmRtWZ2C3/espr6"
+                            Password = "$2a$11$I2lTejQr/ieggT/y7NRfluc1oz4hBfN9JZ3HK9lmRtWZ2C3/espr6"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2025, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "thang.ph2146@gmail.com",
+                            FullName = "Quản trị viên",
+                            IsActive = true,
+                            Password = "$2a$11$I2lTejQr/ieggT/y7NRfluc1oz4hBfN9JZ3HK9lmRtWZ2C3/espr6"
                         });
                 });
 #pragma warning restore 612, 618

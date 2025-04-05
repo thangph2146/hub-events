@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("hub-events")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a33fdcd8ba733c469135f6cbd122588049057403")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5671352a866adee45bd228955faabe70de0e49d")]
 [assembly: System.Reflection.AssemblyProductAttribute("hub-events")]
 [assembly: System.Reflection.AssemblyTitleAttribute("hub-events")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
